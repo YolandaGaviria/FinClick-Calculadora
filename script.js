@@ -1,50 +1,131 @@
 const calculateButton = document.getElementById("calculateButton");
 
+const moneyFormatter = new Intl.NumberFormat("es-CO", {
+  style: "currency",
+  currency: "COP",
+  maximumFractionDigits: 0
+});
+
+function getValue(id) {
+  return Number(document.getElementById(id).value) || 0;
+}
+
+function formatMoney(value) {
+  return moneyFormatter.format(value);
+}
+
+function updateTotals() {
+  const income = getValue("income");
+  const otherIncome = getValue("otherIncome");
+
+  const totalIncome = income + otherIncome;
+
+  const expenses = [
+    "housing",
+    "administration",
+    "utilities",
+    "food",
+    "cellphone",
+    "subscriptions",
+    "medicine",
+    "bankLoans",
+    "creditCards",
+    "smallExpenses",
+    "transport",
+    "otherExpenses"
+  ];
+
+  const totalExpenses = expenses.reduce((total, id) => {
+    return total + getValue(id);
+  }, 0);
+
+  const cashBalance = totalIncome - totalExpenses;
+
+  document.getElementById("totalIncome").textContent =
+    formatMoney(totalIncome);
+
+  document.getElementById("totalExpenses").textContent =
+    formatMoney(totalExpenses);
+
+  document.getElementById("cashBalance").textContent =
+    formatMoney(cashBalance);
+
+  return {
+    totalIncome,
+    totalExpenses,
+    cashBalance
+  };
+}
+
+const allInputs = document.querySelectorAll(
+  ".calculator input"
+);
+
+allInputs.forEach((input) => {
+  input.addEventListener("input", updateTotals);
+});
+
+updateTotals();
+
 calculateButton.addEventListener("click", calculateScore);
 
 function calculateScore() {
-  const income = Number(document.getElementById("income").value);
-  const expenses = Number(document.getElementById("expenses").value);
-  const debtPayments = Number(document.getElementById("debtPayments").value);
-  const savings = Number(document.getElementById("savings").value);
-  const assets = Number(document.getElementById("assets").value);
-  const liabilities = Number(document.getElementById("liabilities").value);
+  const {
+    totalIncome,
+    totalExpenses,
+    cashBalance
+  } = updateTotals();
 
-  if (income <= 0) {
-    alert("Ingresa un valor mayor que cero en Ingresos totales mensuales.");
+  const assets = getValue("assets");
+  const liabilities = getValue("liabilities");
+
+  const bankLoans = getValue("bankLoans");
+  const creditCards = getValue("creditCards");
+
+  const debtPayments = bankLoans + creditCards;
+
+  if (totalIncome <= 0) {
+    alert("Ingresa un valor mayor que cero en Ingresos mensuales.");
     return;
   }
 
-  if (
-    expenses < 0 ||
-    debtPayments < 0 ||
-    assets < 0 ||
-    liabilities < 0
-  ) {
+  const allValues = [
+    totalIncome,
+    totalExpenses,
+    cashBalance,
+    debtPayments,
+    assets,
+    liabilities
+  ];
+
+  if (allValues.some((value) => value < 0)) {
     alert("Los valores no pueden ser negativos.");
     return;
   }
 
   // 1. FLUJO DE CAJA — 30 puntos
-  const cashFlow = income - expenses;
-  const cashFlowPercentage = (cashFlow / income) * 100;
+  const cashFlowPercentage =
+    (cashBalance / totalIncome) * 100;
 
   let cashFlowScore;
 
-  if (cashFlow < 0) {
+  if (cashBalance <= 0) {
     cashFlowScore = 0;
-  } else if (cashFlowPercentage <= 5) {
+  } else if (cashFlowPercentage < 5) {
+    cashFlowScore = 6;
+  } else if (cashFlowPercentage < 10) {
+    cashFlowScore = 12;
+  } else if (cashFlowPercentage < 15) {
     cashFlowScore = 18;
-  } else if (cashFlowPercentage <= 10) {
-    cashFlowScore = 22;
   } else if (cashFlowPercentage < 20) {
-    cashFlowScore = 26;
+    cashFlowScore = 24;
   } else {
     cashFlowScore = 30;
   }
 
   // 2. CARGA FINANCIERA — 25 puntos
-  const financialBurden = (debtPayments / income) * 100;
+  const financialBurden =
+    (debtPayments / totalIncome) * 100;
 
   let financialBurdenScore;
 
@@ -65,7 +146,8 @@ function calculateScore() {
   }
 
   // 3. CAPACIDAD DE AHORRO — 20 puntos
-  const savingCapacity = (savings / income) * 100;
+  // Se obtiene del saldo disponible después de los gastos.
+  const savingCapacity = cashFlowPercentage;
 
   let savingCapacityScore;
 
@@ -89,7 +171,8 @@ function calculateScore() {
   if (assets === 0) {
     netWorthScore = 8;
   } else {
-    const netWorthPercentage = (netWorth / assets) * 100;
+    const netWorthPercentage =
+      (netWorth / assets) * 100;
 
     if (netWorthPercentage < 10) {
       netWorthScore = 9;
@@ -112,7 +195,8 @@ function calculateScore() {
       debtLevelScore = 0;
     }
   } else {
-    const debtLevel = (liabilities / assets) * 100;
+    const debtLevel =
+      (liabilities / assets) * 100;
 
     if (debtLevel <= 20) {
       debtLevelScore = 10;
@@ -135,17 +219,28 @@ function calculateScore() {
 
   // INTERPRETACIÓN
   let interpretation;
+  let interpretationText;
 
   if (totalScore >= 90) {
     interpretation = "Excelente salud financiera.";
+    interpretationText =
+      "Tu resultado indica que tienes una excelente salud financiera.";
   } else if (totalScore >= 80) {
     interpretation = "Muy buena salud financiera.";
+    interpretationText =
+      "Tu resultado indica que tienes una muy buena salud financiera.";
   } else if (totalScore >= 65) {
-    interpretation = "Buena salud financiera, con oportunidades de mejora.";
+    interpretation = "Buena salud financiera.";
+    interpretationText =
+      "Tu resultado indica que tienes una buena salud financiera, pero existen aspectos que podrías fortalecer.";
   } else if (totalScore >= 50) {
-    interpretation = "Salud financiera regular; requiere atención.";
+    interpretation = "Salud financiera regular.";
+    interpretationText =
+      "Tu resultado muestra que hay aspectos importantes de tus finanzas que requieren atención.";
   } else {
     interpretation = "Riesgo financiero alto.";
+    interpretationText =
+      "Tu resultado indica que existen aspectos importantes de tus finanzas que necesitan fortalecerse.";
   }
 
   // SEMÁFORO
@@ -159,21 +254,21 @@ function calculateScore() {
     trafficColor = "green";
   }
 
-  // MOSTRAR RESULTADOS
-  document.getElementById("score").textContent = totalScore;
-  document.getElementById("interpretation").textContent = interpretation;
+  // MOSTRAR RESULTADO
+  document.getElementById("score").textContent =
+    `${totalScore} / 100`;
 
-  document.getElementById("cashFlowScore").textContent = cashFlowScore;
-  document.getElementById("financialBurdenScore").textContent =
-    financialBurdenScore;
-  document.getElementById("savingCapacityScore").textContent =
-    savingCapacityScore;
-  document.getElementById("netWorthScore").textContent = netWorthScore;
-  document.getElementById("debtLevelScore").textContent = debtLevelScore;
+  document.getElementById("interpretation").textContent =
+    interpretation;
 
-  const trafficLight = document.getElementById("trafficLight");
+  document.getElementById("interpretationText").textContent =
+    interpretationText;
 
-  trafficLight.style.backgroundColor = trafficColor;
+  const trafficLight =
+    document.getElementById("trafficLight");
+
+  trafficLight.style.backgroundColor =
+    trafficColor;
 
   document.getElementById("result").classList.remove("hidden");
 
