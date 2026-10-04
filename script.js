@@ -1,26 +1,56 @@
 const calculateButton = document.getElementById("calculateButton");
 
 const moneyFormatter = new Intl.NumberFormat("es-CO", {
-  style: "currency",
-  currency: "COP",
   maximumFractionDigits: 0
 });
-
-function getValue(id) {
-  return Number(document.getElementById(id).value) || 0;
-}
 
 function formatMoney(value) {
   return moneyFormatter.format(value);
 }
 
+// Convierte un campo con puntos de miles a número
+function getValue(id) {
+  const input = document.getElementById(id);
+
+  if (!input || input.value.trim() === "") {
+    return 0;
+  }
+
+  return Number(input.value.replace(/\./g, "")) || 0;
+}
+
+// Formatea los números mientras se escriben
+function formatInput(input) {
+  let value = input.value.replace(/\D/g, "");
+
+  if (value === "") {
+    input.value = "";
+    return;
+  }
+
+  input.value = formatMoney(Number(value));
+}
+
+// Campos monetarios
+const moneyInputs = document.querySelectorAll(
+  '.calculator input[type="number"]'
+);
+
+moneyInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    formatInput(input);
+    updateTotals();
+  });
+});
+
+// Actualizar totales
 function updateTotals() {
   const income = getValue("income");
   const otherIncome = getValue("otherIncome");
 
   const totalIncome = income + otherIncome;
 
-  const expenses = [
+  const expenseIds = [
     "housing",
     "administration",
     "utilities",
@@ -35,7 +65,7 @@ function updateTotals() {
     "otherExpenses"
   ];
 
-  const totalExpenses = expenses.reduce((total, id) => {
+  const totalExpenses = expenseIds.reduce((total, id) => {
     return total + getValue(id);
   }, 0);
 
@@ -57,14 +87,6 @@ function updateTotals() {
   };
 }
 
-const allInputs = document.querySelectorAll(
-  ".calculator input"
-);
-
-allInputs.forEach((input) => {
-  input.addEventListener("input", updateTotals);
-});
-
 updateTotals();
 
 calculateButton.addEventListener("click", calculateScore);
@@ -82,6 +104,7 @@ function calculateScore() {
   const bankLoans = getValue("bankLoans");
   const creditCards = getValue("creditCards");
 
+  // Las cuotas de créditos y tarjetas forman la carga financiera
   const debtPayments = bankLoans + creditCards;
 
   if (totalIncome <= 0) {
@@ -146,7 +169,7 @@ function calculateScore() {
   }
 
   // 3. CAPACIDAD DE AHORRO — 20 puntos
-  // Se obtiene del saldo disponible después de los gastos.
+  // Se calcula a partir del saldo final de caja
   const savingCapacity = cashFlowPercentage;
 
   let savingCapacityScore;
