@@ -17,34 +17,201 @@
 
     <section class="calculator">
 
+      <h2>Ingresos</h2>
+
       <div class="field">
-        <label for="income">Ingresos totales mensuales</label>
-        <input type="number" id="income" min="0" step="any" placeholder="Ej. 5000000">
+        <label for="income">Ingresos mensuales</label>
+        <input
+          type="number"
+          id="income"
+          min="0"
+          step="any"
+          placeholder="Ej. 5000000"
+        >
       </div>
 
       <div class="field">
-        <label for="expenses">Gastos totales mensuales</label>
-        <input type="number" id="expenses" min="0" step="any" placeholder="Ej. 3500000">
+        <label for="otherIncome">Otros ingresos</label>
+        <input
+          type="number"
+          id="otherIncome"
+          min="0"
+          step="any"
+          placeholder="Ej. 500000"
+        >
+      </div>
+
+      <div class="total-box">
+        <span>Total ingresos</span>
+        <strong id="totalIncome">$0</strong>
+      </div>
+
+      <h2>Gastos mensuales</h2>
+
+      <div class="field">
+        <label for="housing">Vivienda</label>
+        <input
+          type="number"
+          id="housing"
+          min="0"
+          step="any"
+          placeholder="Ej. 1500000"
+        >
       </div>
 
       <div class="field">
-        <label for="debtPayments">Cuotas mensuales de deudas</label>
-        <input type="number" id="debtPayments" min="0" step="any" placeholder="Ej. 800000">
+        <label for="administration">Administración</label>
+        <input
+          type="number"
+          id="administration"
+          min="0"
+          step="any"
+          placeholder="Ej. 300000"
+        >
       </div>
 
       <div class="field">
-        <label for="savings">Ahorro mensual</label>
-        <input type="number" id="savings" step="any" placeholder="Ej. 500000">
+        <label for="utilities">Servicios públicos</label>
+        <input
+          type="number"
+          id="utilities"
+          min="0"
+          step="any"
+          placeholder="Ej. 250000"
+        >
       </div>
+
+      <div class="field">
+        <label for="food">Alimentación / mercado</label>
+        <input
+          type="number"
+          id="food"
+          min="0"
+          step="any"
+          placeholder="Ej. 600000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="cellphone">Celular</label>
+        <input
+          type="number"
+          id="cellphone"
+          min="0"
+          step="any"
+          placeholder="Ej. 80000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="subscriptions">Suscripciones / streaming</label>
+        <input
+          type="number"
+          id="subscriptions"
+          min="0"
+          step="any"
+          placeholder="Ej. 50000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="medicine">Medicina</label>
+        <input
+          type="number"
+          id="medicine"
+          min="0"
+          step="any"
+          placeholder="Ej. 100000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="bankLoans">Cuotas créditos bancarios</label>
+        <input
+          type="number"
+          id="bankLoans"
+          min="0"
+          step="any"
+          placeholder="Ej. 500000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="creditCards">Cuotas tarjetas de crédito</label>
+        <input
+          type="number"
+          id="creditCards"
+          min="0"
+          step="any"
+          placeholder="Ej. 300000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="smallExpenses">Gastos hormiga</label>
+        <input
+          type="number"
+          id="smallExpenses"
+          min="0"
+          step="any"
+          placeholder="Ej. 100000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="transport">Transporte</label>
+        <input
+          type="number"
+          id="transport"
+          min="0"
+          step="any"
+          placeholder="Ej. 200000"
+        >
+      </div>
+
+      <div class="field">
+        <label for="otherExpenses">Otros gastos</label>
+        <input
+          type="number"
+          id="otherExpenses"
+          min="0"
+          step="any"
+          placeholder="Ej. 100000"
+        >
+      </div>
+
+      <div class="total-box">
+        <span>Total egresos</span>
+        <strong id="totalExpenses">$0</strong>
+      </div>
+
+      <div class="balance-box">
+        <span>Saldo final de caja</span>
+        <strong id="cashBalance">$0</strong>
+      </div>
+
+      <h2>Patrimonio y deudas</h2>
 
       <div class="field">
         <label for="assets">Activos totales</label>
-        <input type="number" id="assets" min="0" step="any" placeholder="Ej. 100000000">
+        <input
+          type="number"
+          id="assets"
+          min="0"
+          step="any"
+          placeholder="Ej. 100000000"
+        >
       </div>
 
       <div class="field">
-        <label for="liabilities">Pasivos totales</label>
-        <input type="number" id="liabilities" min="0" step="any" placeholder="Ej. 30000000">
+        <label for="liabilities">Pasivos totales / Deudas</label>
+        <input
+          type="number"
+          id="liabilities"
+          min="0"
+          step="any"
+          placeholder="Ej. 30000000"
+        >
       </div>
 
       <button id="calculateButton" type="button">
@@ -57,44 +224,35 @@
 
       <div class="score-container">
         <p>Tu Puntaje de Salud Financiera es:</p>
-        <div id="score">0</div>
+
+        <div id="score">0 / 100</div>
+
         <div id="trafficLight" class="traffic-light"></div>
       </div>
 
       <h2 id="interpretation"></h2>
 
-      <div class="breakdown">
-        <h3>Tu puntaje por indicador</h3>
+      <p id="interpretationText" class="interpretation-text"></p>
 
-        <p>Flujo de Caja: <strong id="cashFlowScore">0</strong> / 30</p>
-        <p>Carga Financiera: <strong id="financialBurdenScore">0</strong> / 25</p>
-        <p>Capacidad de Ahorro: <strong id="savingCapacityScore">0</strong> / 20</p>
-        <p>Patrimonio Neto: <strong id="netWorthScore">0</strong> / 15</p>
-        <p>Nivel de Endeudamiento: <strong id="debtLevelScore">0</strong> / 10</p>
+      <div class="cta-box">
+        <p>
+          ¿Quieres entender qué hay detrás de tu resultado y cómo fortalecer
+          tus finanzas?
+        </p>
+
+        <a href="https://www.finclick.app/" target="_blank" rel="noopener">
+          Conoce FinClick
+        </a>
       </div>
 
-      <div id="emailSection" class="email-section">
-        <h3>¿Quieres recibir tu resultado por correo?</h3>
-        <p>Déjanos tu correo electrónico para recibirlo.</p>
+    </section>
 
-        <input
-          type="email"
-          id="email"
-          placeholder
-          >
+    <footer>
+      <p>FinClick · Finanzas más claras</p>
+    </footer>
 
-<button id="emailButton" type="button">
-  Recibir mi resultado
-</button>
-</div>
-</section>
+  </main>
 
-<footer>
-  <p>FinClick · Finanzas más claras</p>
-</footer>
-
-</main>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
