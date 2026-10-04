@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcula tu Puntaje de Salud Financiera | FinClick</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+
+    <header class="header">
+      <h1>Calcula tu Puntaje de Salud Financiera</h1>
+      <p>Conoce cómo están tus finanzas en una escala de 0 a 100 puntos.</p>
+    </header>
+
+    <section class="calculator">
+
+      <div class="field">
+        <label for="income">Ingresos totales mensuales</label>
+        <input type="number" id="income" min="0" step="any" placeholder="Ej. 5000000">
+      </div>
+
+      <div class="field">
+        <label for="expenses">Gastos totales mensuales</label>
+        <input type="number" id="expenses" min="0" step="any" placeholder="Ej. 3500000">
+      </div>
+
+      <div class="field">
+        <label for="debtPayments">Cuotas mensuales de deudas</label>
+        <input type="number" id="debtPayments" min="0" step="any" placeholder="Ej. 800000">
+      </div>
+
+      <div class="field">
+        <label for="savings">Ahorro mensual</label>
+        <input type="number" id="savings" step="any" placeholder="Ej. 500000">
+      </div>
+
+      <div class="field">
+        <label for="assets">Activos totales</label>
+        <input type="number" id="assets" min="0" step="any" placeholder="Ej. 100000000">
+      </div>
+
+      <div class="field">
+        <label for="liabilities">Pasivos totales</label>
+        <input type="number" id="liabilities" min="0" step="any" placeholder="Ej. 30000000">
+      </div>
+
+      <button id="calculateButton" type="button">
+        Calcular mi puntaje
+      </button>
+
+    </section>
+
+    <section id="result" class="result hidden">
+
+      <div class="score-container">
+        <p>Tu Puntaje de Salud Financiera es:</p>
+        <div id="score">0</div>
+        <div id="trafficLight" class="traffic-light"></div>
+      </div>
+
+      <h2 id="interpretation"></h2>
+
+      <div class="breakdown">
+        <h3>Tu puntaje por indicador</h3>
+
+        <p>Flujo de Caja: <strong id="cashFlowScore">0</strong> / 30</p>
+        <p>Carga Financiera: <strong id="financialBurdenScore">0</strong> / 25</p>
+        <p>Capacidad de Ahorro: <strong id="savingCapacityScore">0</strong> / 20</p>
+        <p>Patrimonio Neto: <strong id="netWorthScore">0</strong> / 15</p>
+        <p>Nivel de Endeudamiento: <strong id="debtLevelScore">0</strong> / 10</p>
+      </div>
+
+      <div id="emailSection" class="email-section">
+        <h3>¿Quieres recibir tu resultado por correo?</h3>
+        <p>Déjanos tu correo electrónico para recibirlo.</p>
+
+        <input
+          type="email"
+          id="email"
+          placeholder
