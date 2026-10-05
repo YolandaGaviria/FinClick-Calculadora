@@ -6,264 +6,139 @@
   <title>Calcula tu Puntaje de Salud Financiera | FinClick</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
   <main class="container">
-
-    <header class="header">
-      <div class="brand">FinClick</div>
-
-      <h1>Calcula tu Puntaje de Salud Financiera</h1>
-
-      <p>
-        Conoce cómo están tus finanzas en una escala de 0 a 100 puntos.
-      </p>
-    </header>
-
-
-    <section class="calculator">
-
-      <!-- INGRESOS -->
-      <h2>Ingresos</h2>
-
-      <div class="field">
-        <label for="income">Ingresos mensuales</label>
-        <input
-          type="text"
-          id="income"
-          inputmode="numeric"
-          placeholder="Ej. 5.000.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="otherIncome">Otros ingresos</label>
-        <input
-          type="text"
-          id="otherIncome"
-          inputmode="numeric"
-          placeholder="Ej. 500.000"
-        >
-      </div>
-
-      <div class="total-box">
-        <span>Total ingresos</span>
-        <strong id="totalIncome">0</strong>
-      </div>
-
-
-      <!-- GASTOS -->
-      <h2>Gastos mensuales</h2>
-
-      <div class="field">
-        <label for="housing">Vivienda</label>
-        <input
-          type="text"
-          id="housing"
-          inputmode="numeric"
-          placeholder="Ej. 1.500.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="administration">Administración</label>
-        <input
-          type="text"
-          id="administration"
-          inputmode="numeric"
-          placeholder="Ej. 300.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="utilities">Servicios públicos</label>
-        <input
-          type="text"
-          id="utilities"
-          inputmode="numeric"
-          placeholder="Ej. 300.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="food">Alimentación / mercado</label>
-        <input
-          type="text"
-          id="food"
-          inputmode="numeric"
-          placeholder="Ej. 800.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="cellphone">Celular</label>
-        <input
-          type="text"
-          id="cellphone"
-          inputmode="numeric"
-          placeholder="Ej. 100.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="subscriptions">Suscripciones / streaming</label>
-        <input
-          type="text"
-          id="subscriptions"
-          inputmode="numeric"
-          placeholder="Ej. 80.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="medicine">Medicina</label>
-        <input
-          type="text"
-          id="medicine"
-          inputmode="numeric"
-          placeholder="Ej. 150.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="bankLoans">Cuotas créditos bancarios</label>
-        <input
-          type="text"
-          id="bankLoans"
-          inputmode="numeric"
-          placeholder="Ej. 700.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="creditCards">Cuotas tarjetas de crédito</label>
-        <input
-          type="text"
-          id="creditCards"
-          inputmode="numeric"
-          placeholder="Ej. 300.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="smallExpenses">Gastos hormiga</label>
-        <input
-          type="text"
-          id="smallExpenses"
-          inputmode="numeric"
-          placeholder="Ej. 100.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="transport">Transporte</label>
-        <input
-          type="text"
-          id="transport"
-          inputmode="numeric"
-          placeholder="Ej. 250.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="otherExpenses">Otros gastos</label>
-        <input
-          type="text"
-          id="otherExpenses"
-          inputmode="numeric"
-          placeholder="Ej. 200.000"
-        >
-      </div>
-
-      <div class="total-box">
-        <span>Total egresos</span>
-        <strong id="totalExpenses">0</strong>
-      </div>
-
-      <div class="balance-box">
-        <span>Saldo final de caja</span>
-        <strong id="cashBalance">0</strong>
-      </div>
-
-
-      <!-- PATRIMONIO Y DEUDAS -->
-      <h2>Patrimonio y deudas</h2>
-
-      <div class="field">
-        <label for="assets">Activos totales</label>
-        <input
-          type="text"
-          id="assets"
-          inputmode="numeric"
-          placeholder="Ej. 100.000.000"
-        >
-      </div>
-
-      <div class="field">
-        <label for="liabilities">Pasivos totales</label>
-        <input
-          type="text"
-          id="liabilities"
-          inputmode="numeric"
-          placeholder="Ej. 30.000.000"
-        >
-      </div>
-
-
-      <button id="calculateButton" type="button">
-        Calcular mi puntaje
-      </button>
-
-    </section>
-
-
-    <!-- RESULTADO -->
-    <section id="result" class="result hidden">
-
-      <div class="score-container">
-
-        <p>Tu Puntaje de Salud Financiera es:</p>
-
-        <div id="score">0 / 100</div>
-
-        <div id="trafficLight" class="traffic-light"></div>
-
-      </div>
-
-      <h2 id="interpretation"></h2>
-
-      <p id="interpretationText" class="interpretation-text"></p>
-
-
-      <div class="cta-box">
-
-        <p>
-          ¿Quieres entender qué hay detrás de tu resultado y cómo mejorar
-          tus finanzas?
-        </p>
-
-        <a
-          href="https://www.finclick.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Conoce FinClick
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <footer>
-      <p>FinClick · Finanzas más claras</p>
-    </footer>
-
+<header class="header">
+  <div class="brand">FinClick</div>
+  <h1>Calcula tu Puntaje de Salud Financiera</h1>
+  <p>
+    Conoce cómo están tus finanzas en una escala de 0 a 100 puntos.
+  </p>
+</header>
+<section class="calculator">
+  <!-- INGRESOS -->
+  <h2>Ingresos</h2>
+  <div class="field">
+    <label for="income">Ingresos mensuales</label>
+    <input
+      type="text"
+      id="income"
+      inputmode="numeric"
+      placeholder="Ej. 5.000.000"
+    >
+  </div>
+  <div class="field">
+    <label for="otherIncome">Otros ingresos</label>
+    <input
+      type="text"
+      id="otherIncome"
+      inputmode="numeric"
+      placeholder="Ej. 500.000"
+    >
+  </div>
+  <div class="total-box">
+    <span>Total ingresos</span>
+    <strong id="totalIncome">0</strong>
+  </div>
+  <!-- GASTOS -->
+  <h2>Gastos mensuales</h2>
+  <div class="field">
+    <label for="housing">Vivienda</label>
+    <input type="text" id="housing" inputmode="numeric" placeholder="Ej. 1.500.000">
+  </div>
+  <div class="field">
+    <label for="administration">Administración</label>
+    <input type="text" id="administration" inputmode="numeric" placeholder="Ej. 300.000">
+  </div>
+  <div class="field">
+    <label for="utilities">Servicios públicos</label>
+    <input type="text" id="utilities" inputmode="numeric" placeholder="Ej. 300.000">
+  </div>
+  <div class="field">
+    <label for="food">Alimentación / mercado</label>
+    <input type="text" id="food" inputmode="numeric" placeholder="Ej. 800.000">
+  </div>
+  <div class="field">
+    <label for="cellphone">Celular</label>
+    <input type="text" id="cellphone" inputmode="numeric" placeholder="Ej. 100.000">
+  </div>
+  <div class="field">
+    <label for="subscriptions">Suscripciones / streaming</label>
+    <input type="text" id="subscriptions" inputmode="numeric" placeholder="Ej. 80.000">
+  </div>
+  <div class="field">
+    <label for="medicine">Medicina</label>
+    <input type="text" id="medicine" inputmode="numeric" placeholder="Ej. 150.000">
+  </div>
+  <div class="field">
+    <label for="bankLoans">Cuotas créditos bancarios</label>
+    <input type="text" id="bankLoans" inputmode="numeric" placeholder="Ej. 700.000">
+  </div>
+  <div class="field">
+    <label for="creditCards">Cuotas tarjetas de crédito</label>
+    <input type="text" id="creditCards" inputmode="numeric" placeholder="Ej. 300.000">
+  </div>
+  <div class="field">
+    <label for="smallExpenses">Gastos hormiga</label>
+    <input type="text" id="smallExpenses" inputmode="numeric" placeholder="Ej. 100.000">
+  </div>
+  <div class="field">
+    <label for="transport">Transporte</label>
+    <input type="text" id="transport" inputmode="numeric" placeholder="Ej. 250.000">
+  </div>
+  <div class="field">
+    <label for="otherExpenses">Otros gastos</label>
+    <input type="text" id="otherExpenses" inputmode="numeric" placeholder="Ej. 200.000">
+  </div>
+  <div class="total-box">
+    <span>Total egresos</span>
+    <strong id="totalExpenses">0</strong>
+  </div>
+  <div class="balance-box">
+    <span>Saldo final de caja</span>
+    <strong id="cashBalance">0</strong>
+  </div>
+  <!-- PATRIMONIO Y DEUDAS -->
+  <h2>Patrimonio y deudas</h2>
+  <div class="field">
+    <label for="assets">Activos totales</label>
+    <input type="text" id="assets" inputmode="numeric" placeholder="Ej. 100.000.000">
+  </div>
+  <div class="field">
+    <label for="liabilities">Pasivos totales</label>
+    <input type="text" id="liabilities" inputmode="numeric" placeholder="Ej. 30.000.000">
+  </div>
+  <button id="calculateButton" type="button">
+    Calcular mi puntaje
+  </button>
+</section>
+<!-- RESULTADO -->
+<section id="result" class="result hidden">
+  <div class="score-container">
+    <p>Tu Puntaje de Salud Financiera es:</p>
+    <div id="score">0 / 100</div>
+    <div id="trafficLight" class="traffic-light"></div>
+  </div>
+  <h2 id="interpretation"></h2>
+  <p id="interpretationText" class="interpretation-text"></p>
+  <div class="cta-box">
+    <p>
+      ¿Quieres entender qué hay detrás de tu resultado y cómo mejorar
+      tus finanzas?
+    </p>
+    <a
+      href="https://www.finclick.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Conoce cómo funciona FinClick
+    </a>
+  </div>
+</section>
+<footer>
+  <p>FinClick · Finanzas más claras</p>
+</footer>
   </main>
-
-
   <script src="script.js"></script>
-
 </body>
 </html>
