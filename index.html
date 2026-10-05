@@ -8,25 +8,32 @@
 </head>
 
 <body>
+
   <main class="container">
 
     <header class="header">
+      <div class="brand">FinClick</div>
+
       <h1>Calcula tu Puntaje de Salud Financiera</h1>
-      <p>Conoce cómo están tus finanzas en una escala de 0 a 100 puntos.</p>
+
+      <p>
+        Conoce cómo están tus finanzas en una escala de 0 a 100 puntos.
+      </p>
     </header>
+
 
     <section class="calculator">
 
+      <!-- INGRESOS -->
       <h2>Ingresos</h2>
 
       <div class="field">
         <label for="income">Ingresos mensuales</label>
         <input
           type="text"
-          inputmode="numeric"
           id="income"
+          inputmode="numeric"
           placeholder="Ej. 5.000.000"
-          autocomplete="off"
         >
       </div>
 
@@ -34,29 +41,28 @@
         <label for="otherIncome">Otros ingresos</label>
         <input
           type="text"
-          inputmode="numeric"
           id="otherIncome"
+          inputmode="numeric"
           placeholder="Ej. 500.000"
-          autocomplete="off"
         >
       </div>
 
       <div class="total-box">
         <span>Total ingresos</span>
-        <strong id="totalIncome">$0</strong>
+        <strong id="totalIncome">0</strong>
       </div>
 
 
+      <!-- GASTOS -->
       <h2>Gastos mensuales</h2>
 
       <div class="field">
         <label for="housing">Vivienda</label>
         <input
           type="text"
-          inputmode="numeric"
           id="housing"
+          inputmode="numeric"
           placeholder="Ej. 1.500.000"
-          autocomplete="off"
         >
       </div>
 
@@ -64,10 +70,9 @@
         <label for="administration">Administración</label>
         <input
           type="text"
-          inputmode="numeric"
           id="administration"
+          inputmode="numeric"
           placeholder="Ej. 300.000"
-          autocomplete="off"
         >
       </div>
 
@@ -75,10 +80,9 @@
         <label for="utilities">Servicios públicos</label>
         <input
           type="text"
-          inputmode="numeric"
           id="utilities"
-          placeholder="Ej. 250.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 300.000"
         >
       </div>
 
@@ -86,10 +90,9 @@
         <label for="food">Alimentación / mercado</label>
         <input
           type="text"
-          inputmode="numeric"
           id="food"
-          placeholder="Ej. 600.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 800.000"
         >
       </div>
 
@@ -97,10 +100,9 @@
         <label for="cellphone">Celular</label>
         <input
           type="text"
-          inputmode="numeric"
           id="cellphone"
-          placeholder="Ej. 80.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 100.000"
         >
       </div>
 
@@ -108,10 +110,9 @@
         <label for="subscriptions">Suscripciones / streaming</label>
         <input
           type="text"
-          inputmode="numeric"
           id="subscriptions"
-          placeholder="Ej. 50.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 80.000"
         >
       </div>
 
@@ -119,10 +120,9 @@
         <label for="medicine">Medicina</label>
         <input
           type="text"
-          inputmode="numeric"
           id="medicine"
-          placeholder="Ej. 100.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 150.000"
         >
       </div>
 
@@ -130,10 +130,9 @@
         <label for="bankLoans">Cuotas créditos bancarios</label>
         <input
           type="text"
-          inputmode="numeric"
           id="bankLoans"
-          placeholder="Ej. 500.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 700.000"
         >
       </div>
 
@@ -141,10 +140,9 @@
         <label for="creditCards">Cuotas tarjetas de crédito</label>
         <input
           type="text"
-          inputmode="numeric"
           id="creditCards"
+          inputmode="numeric"
           placeholder="Ej. 300.000"
-          autocomplete="off"
         >
       </div>
 
@@ -152,10 +150,9 @@
         <label for="smallExpenses">Gastos hormiga</label>
         <input
           type="text"
-          inputmode="numeric"
           id="smallExpenses"
+          inputmode="numeric"
           placeholder="Ej. 100.000"
-          autocomplete="off"
         >
       </div>
 
@@ -163,10 +160,9 @@
         <label for="transport">Transporte</label>
         <input
           type="text"
-          inputmode="numeric"
           id="transport"
-          placeholder="Ej. 200.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 250.000"
         >
       </div>
 
@@ -174,47 +170,46 @@
         <label for="otherExpenses">Otros gastos</label>
         <input
           type="text"
-          inputmode="numeric"
           id="otherExpenses"
-          placeholder="Ej. 100.000"
-          autocomplete="off"
+          inputmode="numeric"
+          placeholder="Ej. 200.000"
         >
       </div>
 
       <div class="total-box">
         <span>Total egresos</span>
-        <strong id="totalExpenses">$0</strong>
+        <strong id="totalExpenses">0</strong>
       </div>
 
       <div class="balance-box">
         <span>Saldo final de caja</span>
-        <strong id="cashBalance">$0</strong>
+        <strong id="cashBalance">0</strong>
       </div>
 
 
+      <!-- PATRIMONIO Y DEUDAS -->
       <h2>Patrimonio y deudas</h2>
 
       <div class="field">
         <label for="assets">Activos totales</label>
         <input
           type="text"
-          inputmode="numeric"
           id="assets"
+          inputmode="numeric"
           placeholder="Ej. 100.000.000"
-          autocomplete="off"
         >
       </div>
 
       <div class="field">
-        <label for="liabilities">Pasivos totales / Deudas</label>
+        <label for="liabilities">Pasivos totales</label>
         <input
           type="text"
-          inputmode="numeric"
           id="liabilities"
+          inputmode="numeric"
           placeholder="Ej. 30.000.000"
-          autocomplete="off"
         >
       </div>
+
 
       <button id="calculateButton" type="button">
         Calcular mi puntaje
@@ -223,33 +218,39 @@
     </section>
 
 
+    <!-- RESULTADO -->
     <section id="result" class="result hidden">
 
       <div class="score-container">
+
         <p>Tu Puntaje de Salud Financiera es:</p>
 
         <div id="score">0 / 100</div>
 
         <div id="trafficLight" class="traffic-light"></div>
+
       </div>
 
       <h2 id="interpretation"></h2>
 
       <p id="interpretationText" class="interpretation-text"></p>
 
+
       <div class="cta-box">
+
         <p>
-          ¿Quieres entender qué hay detrás de tu resultado y cómo fortalecer
+          ¿Quieres entender qué hay detrás de tu resultado y cómo mejorar
           tus finanzas?
         </p>
 
         <a
           href="https://www.finclick.app/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Conoce FinClick
         </a>
+
       </div>
 
     </section>
@@ -261,6 +262,8 @@
 
   </main>
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
